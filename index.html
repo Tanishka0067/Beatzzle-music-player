@@ -1,0 +1,61 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beatzzle</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <h1>Beatzzle</h1>
+    <div class="music-player">
+      <div class="details">
+        <marquee><div class="now-playing"></div></marquee>
+        <div class="banner"></div>
+        <div class="name"></div>
+        <div class="artist"></div>
+      </div>
+      <div class="controls">
+        <div class="previous" id="previous">
+          <i class="fa-solid fa-backward"></i>
+        </div>
+        <div class="pause" id="pause">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <div class="next" id="next">
+          <i class="fa-solid fa-forward"></i>
+        </div>
+      </div>
+      <div class="slider">
+        <div class="time">00:00</div>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="0"
+          id="main-slider"
+          onchange="seekTo()"
+        />
+        <div class="duration">00:00</div>
+      </div>
+      <div class="volume">
+        <i class="fa-solid fa-volume-high"></i>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value="9"
+          class="volume-slider"
+          onchange="volume()"
+        />
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
