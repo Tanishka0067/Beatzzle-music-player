@@ -7,13 +7,15 @@ let previous = document.querySelector(".previous");
 let next = document.querySelector(".next");
 let mainSlider = document.getElementById("main-slider");
 let Volume = document.querySelector(".volume-slider");
-let volumeSetting = document.querySelector(".volume");
+let volumeSetting = document.querySelector(".vol-icon");
 let time = document.querySelector(".time");
 let duration = document.querySelector(".duration");
 var updateTimer;
 let track_index = 0;
 let IsPlaying = false;
 let curr_track = document.createElement("audio");
+const playlistContainer = document.querySelector(".playlist-container");
+const playlistDisplay = document.querySelector(".playlist-disp");
 
 let musicLibrary = [
   {
@@ -132,6 +134,7 @@ function seek() {
   curr_track.currentTime = seek;
   console.log("Seeeeeeeeeeek");
 }
+
 function seekUpdate() {
   let seekPosition = 0;
   if (!isNaN(curr_track.duration)) {
@@ -186,7 +189,8 @@ function mute() {
 }
 function unmute() {
   curr_track.volume = Volume.value / 100;
-  // document.innerHTML = volumeSetting;
+  volumeSetting.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+  0;
 }
 function muteUnmute() {
   // curr_track.volume=0;
@@ -202,8 +206,9 @@ function muteUnmute() {
     unmute();
   }
 }
-
-
+function show() {
+  playlistContainer.style.visibilty = "visible";
+}
 
 loadTrack(0);
 pause.addEventListener("click", pauseplay);
@@ -212,14 +217,14 @@ previous.addEventListener("click", previousTrack);
 mainSlider.addEventListener("input", seek);
 Volume.addEventListener("input", SetVolume);
 document.addEventListener("keydown", keyss);
-
+playlistDisplay.addEventListener("click", show);
 
 function addSongToPlaylist(index) {
   let playlistItem = document.createElement("li");
   playlistItem.textContent = `${musicLibrary[index].name} - ${musicLibrary[index].artist}`;
-
   document.getElementById("playlist").appendChild(playlistItem);
 }
 document.getElementById("addplaylist").addEventListener("click", function () {
   addSongToPlaylist(track_index);
+  console.log(adddddddddddddd);
 });

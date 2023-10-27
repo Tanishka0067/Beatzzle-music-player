@@ -39,23 +39,30 @@
       </div>
       <div class="feature">
         <div class="volume">
-          <i class="fa-solid fa-volume-high"></i>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value="90"
-            class="volume-slider"
-          />
+          <div class="vol-icon"><i class="fa-solid fa-volume-high"></i></div>
+          <div class="vol-slider">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="90"
+              class="volume-slider"
+            />
+          </div>
         </div>
         <div class="playlist-disp">
-          <a href="playlist.html"><i class="fa-solid fa-list"></i></a>
+          <i class="fa-solid fa-list"></i>
+        </div>
+        <div id="addplaylist">
+          <i class="fa-solid fa-heart"></i>
+        </div>
       </div>
-      <button id="addplaylist" type="button"> 
-        <i class="fa-solid fa-heart"></i> 
-      </button> </div>
-  </div>
+    </div>
+    <div class="playlist-container">
+      <h1>~ Your Playlist ~</h1>
 
+      <ul id="playlist"></ul>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

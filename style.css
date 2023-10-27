@@ -55,7 +55,8 @@ marquee{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin:0rem 30vw;
+    margin:0vw 30vw;
+    gap: 20px;
 }
 .pause, 
 .previous, 
@@ -92,9 +93,6 @@ marquee{
     gap: 2rem;
     }
  .volume{
-   
-    
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,8 +103,6 @@ marquee{
     height: 1rem;
     opacity: 0.7;
     transition: opacity 0.4s;
-    
-  
  }
  #main-slider::-webkit-slider-thumb,
  .volume::-webkit-slider-thumb{
@@ -114,7 +110,6 @@ marquee{
     background-color: white;
     cursor: pointer;
     border-radius: 50%;
-
  }
  
  #main-slider:hover,
@@ -126,4 +121,20 @@ marquee{
     background: transparent;
     font-size: 2rem;
     border: none;
+}
+.playlist-disp{
+    background: transparent;
+    font-size: 2rem;
+    border: none;
+}
+.playlist-container{
+    margin: 20px;
+    box-shadow: 2px 2px 2px black;
+    border: 2px solid black;
+    visibility: hidden;
+    width: 100%;
+    background-color: rgb(70, 69, 69);
+}
+.playlist-container h1{
+    font-size: 2rem;
 }
