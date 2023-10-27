@@ -7,6 +7,7 @@ let previous = document.querySelector(".previous");
 let next = document.querySelector(".next");
 let mainSlider = document.getElementById("main-slider");
 let Volume = document.querySelector(".volume-slider");
+let volumeSetting = document.querySelector(".volume");
 let time = document.querySelector(".time");
 let duration = document.querySelector(".duration");
 var updateTimer;
@@ -63,6 +64,12 @@ let musicLibrary = [
     image: "bannerimages/ind.jpg",
     path: "audiofiles/TournerDansLeVide.mp3",
   },
+  {
+    name: "MIA23",
+    artist: "Charles Leclerc",
+    image: "bannerimages/charles.jpeg",
+    path: "audiofiles/MIA23.mp3",
+  },
 ];
 
 function resetValue() {
@@ -107,6 +114,7 @@ function pauseplay() {
     pauseTrack();
   }
 }
+
 function nextTrack() {
   if (track_index < musicLibrary.length - 1) track_index += 1;
   else track_index = 0;
@@ -155,10 +163,57 @@ function SetVolume() {
   curr_track.volume = Volume.value/100;
   
 }
+function keyss(event){
+    if(event.code ==='ArrowUp'){
+      curr_track.volume +=10; 
+    
+    }
+    else if(event.code==='ArrowDown'){
+        curr_track.volume -=10;
+    }else if(event.key ==='m'){
+        muteUnmute();
+    }
 
+    else if(event.code ==='Space'){
+        pauseplay();
+
+    }
+    else if(event.code==='ArrowRight'){
+        nextTrack();
+       
+    }else if(event.code==='ArrowLeft'){
+        previousTrack();
+    }
+}
+function mute(){
+    curr_track.volume=0;
+    volumeSetting.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`
+}
+function unmute(){
+    curr_track.volume=Volume.value/100;
+    // document.innerHTML = volumeSetting; 
+}
+function muteUnmute(){
+    
+    // curr_track.volume=0;
+    // volumeSetting.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+    // volumeSetting.addEventListener("click", function(event2){
+    //     if(event2.key==='m'){
+    //         curr_track.volume=100;
+    //     }
+    //  })
+    if (!curr_track.volume==0) {
+       mute() ;
+      } else {
+        unmute();
+      }
+    
+}
 loadTrack(0);
 pause.addEventListener("click", pauseplay);
 next.addEventListener("click", nextTrack);
 previous.addEventListener("click", previousTrack);
 mainSlider.addEventListener("input",seek);
 Volume.addEventListener("input",SetVolume);
+document.addEventListener('keydown',keyss);
+// document.addEventListener("keydown",muteUnmute);
