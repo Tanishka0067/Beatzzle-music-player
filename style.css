@@ -121,10 +121,9 @@ marquee{
  .volume:hover{
     opacity: 1;
  }
- /* #addButton{
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    width: 10%;
-    height: 10%;
-} */
+#addplaylist{
+    opacity: transparent;
+    background: transparent;
+    font-size: 2rem;
+    border: none;
+}

@@ -134,86 +134,92 @@ function seek() {
 }
 function seekUpdate() {
   let seekPosition = 0;
-  if(!isNaN(curr_track.duration)){
- seekPosition = curr_track.currentTime*(100 / curr_track.duration);
- mainSlider.value=seekPosition;
-  let currentMinutes = Math.floor(curr_track.currentTime / 60);
-  let currentSecond = Math.floor(curr_track.currentTime - currentMinutes * 60);
-  let durationminute = Math.floor(curr_track.duration / 60);
-  let durationseconds = Math.floor(curr_track.duration - durationminute * 60);
+  if (!isNaN(curr_track.duration)) {
+    seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+    mainSlider.value = seekPosition;
+    let currentMinutes = Math.floor(curr_track.currentTime / 60);
+    let currentSecond = Math.floor(
+      curr_track.currentTime - currentMinutes * 60
+    );
+    let durationminute = Math.floor(curr_track.duration / 60);
+    let durationseconds = Math.floor(curr_track.duration - durationminute * 60);
 
-//   console.log(currentMinutes);
-  if (currentMinutes < 10) {
-    currentMinutes = "0" + currentMinutes;
+    //   console.log(currentMinutes);
+    if (currentMinutes < 10) {
+      currentMinutes = "0" + currentMinutes;
+    }
+    if (currentSecond < 10) {
+      currentSecond = "0" + currentSecond;
+    }
+    if (durationminute < 10) {
+      durationminute = "0" + durationminute;
+    }
+    if (durationseconds < 10) {
+      durationseconds = "0" + durationseconds;
+    }
+    time.textContent = currentMinutes + ":" + currentSecond;
+    duration.textContent = durationminute + ":" + durationseconds;
   }
-  if (currentSecond < 10) {
-    currentSecond = "0" + currentSecond;
-  }
-  if (durationminute < 10) {
-    durationminute = "0" + durationminute;
-  }
-  if (durationseconds < 10) {
-    durationseconds = "0" + durationseconds;
-  }
-  time.textContent = currentMinutes + ":" + currentSecond;
-  duration.textContent = durationminute + ":" + durationseconds;
-}}
+}
 
 function SetVolume() {
-  curr_track.volume = Volume.value/100;
-  
+  curr_track.volume = Volume.value / 100;
 }
-function keyss(event){
-    if(event.code ==='ArrowUp'){
-      curr_track.volume +=10; 
-    
-    }
-    else if(event.code==='ArrowDown'){
-        curr_track.volume -=10;
-    }else if(event.key ==='m'){
-        muteUnmute();
-    }
+function keyss(event) {
+  if (event.code === "ArrowUp") {
+    curr_track.volume += 10;
+  } else if (event.code === "ArrowDown") {
+    curr_track.volume -= 10;
+  } else if (event.key === "m") {
+    muteUnmute();
+  } else if (event.code === "Space") {
+    pauseplay();
+  } else if (event.code === "ArrowRight") {
+    nextTrack();
+  } else if (event.code === "ArrowLeft") {
+    previousTrack();
+  }
+}
+function mute() {
+  curr_track.volume = 0;
+  volumeSetting.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+}
+function unmute() {
+  curr_track.volume = Volume.value / 100;
+  // document.innerHTML = volumeSetting;
+}
+function muteUnmute() {
+  // curr_track.volume=0;
+  // volumeSetting.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+  // volumeSetting.addEventListener("click", function(event2){
+  //     if(event2.key==='m'){
+  //         curr_track.volume=100;
+  //     }
+  //  })
+  if (!curr_track.volume == 0) {
+    mute();
+  } else {
+    unmute();
+  }
+}
 
-    else if(event.code ==='Space'){
-        pauseplay();
 
-    }
-    else if(event.code==='ArrowRight'){
-        nextTrack();
-       
-    }else if(event.code==='ArrowLeft'){
-        previousTrack();
-    }
-}
-function mute(){
-    curr_track.volume=0;
-    volumeSetting.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`
-}
-function unmute(){
-    curr_track.volume=Volume.value/100;
-    // document.innerHTML = volumeSetting; 
-}
-function muteUnmute(){
-    
-    // curr_track.volume=0;
-    // volumeSetting.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
-    // volumeSetting.addEventListener("click", function(event2){
-    //     if(event2.key==='m'){
-    //         curr_track.volume=100;
-    //     }
-    //  })
-    if (!curr_track.volume==0) {
-       mute() ;
-      } else {
-        unmute();
-      }
-    
-}
+
 loadTrack(0);
 pause.addEventListener("click", pauseplay);
 next.addEventListener("click", nextTrack);
 previous.addEventListener("click", previousTrack);
-mainSlider.addEventListener("input",seek);
-Volume.addEventListener("input",SetVolume);
-document.addEventListener('keydown',keyss);
-// document.addEventListener("keydown",muteUnmute);
+mainSlider.addEventListener("input", seek);
+Volume.addEventListener("input", SetVolume);
+document.addEventListener("keydown", keyss);
+
+
+function addSongToPlaylist(index) {
+  let playlistItem = document.createElement("li");
+  playlistItem.textContent = `${musicLibrary[index].name} - ${musicLibrary[index].artist}`;
+
+  document.getElementById("playlist").appendChild(playlistItem);
+}
+document.getElementById("addplaylist").addEventListener("click", function () {
+  addSongToPlaylist(track_index);
+});
