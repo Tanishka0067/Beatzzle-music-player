@@ -37,6 +37,12 @@ let musicLibrary = [
     path: "audiofiles/Kesariya.mp3",
   },
   {
+    name: "I don't wanna live forever",
+    artist: "Zayn x Taylor Swift",
+    image: "bannerimages/idwlf.jpg",
+    path: "audiofiles/IDontWannaLiveForever.mp3",
+  },
+  {
     name: "People You Know X Starboy",
     artist: "Unknown",
     image: "bannerimages/pykxstar.jpg",
@@ -222,11 +228,7 @@ function addToPlaylist() {
   console.log(myPlaylist);
 }
 
-function createPlaylist() {
-  let newPlaylist = document.createElement(Array);
-  Playlists.push(newPlaylist);
-  addToPlaylist();
-}
+
 function changename() {
   var newtitle = document.getElementById("inputTextField").value;
   if (newtitle.length == 0) {
@@ -255,14 +257,7 @@ function songlist() {
   songsdisp.style.cssText = "visibility:visible";
 
   for (let i = 0; i < musicLibrary.length; i++) {
-    /*let songs =document.createElement("li");
-    // let songs="";
-    songs =`<div class="track_list_item" id="${i} " >${musicLibrary[i].name}</div> 
-    <div class="track_artist" >${musicLibrary[i].artist}</div>`;
-    songs.addEventListener("click",()=>{
-      loadTrack(i);
-    })
-  trackList.insertAdjacentHTML("beforeend",songs);*/
+   
     let songs = document.createElement("div");
     songs.classList.add("track_list_item");
     songs.id = i;
@@ -282,6 +277,11 @@ function backbutton() {
   musicPlayer.style.cssText = "display:block";
   songsdisp.style.cssText = "visibility:hidden";
 }
+function createPlaylist() {
+  let newPlaylist = document.createElement(Array);
+  Playlists.push(newPlaylist);
+  addToPlaylist();
+}
 loadTrack(0);
 pause.addEventListener("click", pauseplay);
 next.addEventListener("click", nextTrack);
@@ -291,7 +291,6 @@ Volume.addEventListener("input", SetVolume);
 document.addEventListener("keydown", keyss);
 addtp.addEventListener("click", addToPlaylist);
 list.addEventListener("click", dispPlaylist);
-
 submit.addEventListener("click", changename);
 back.addEventListener("click", backbutton);
 cross.addEventListener("click", displayPlayer);
