@@ -139,13 +139,13 @@ function nextTrack() {
   if (track_index < musicLibrary.length - 1) track_index += 1;
   else track_index = 0;
   loadTrack(track_index);
-  pauseplay();
+  playTrack();
 }
 function previousTrack() {
   if (track_index > 0) track_index -= 1;
   else track_index = musicLibrary.length - 1;
   loadTrack(track_index);
-  pauseplay();
+  playTrack();
 }
 function seek() {
   seek = curr_track.duration * (mainSlider.value / 100);
@@ -276,12 +276,14 @@ function songlist() {
 function backbutton() {
   musicPlayer.style.cssText = "display:block";
   songsdisp.style.cssText = "visibility:hidden";
-}
+}/*
 function createPlaylist() {
   let newPlaylist = document.createElement(Array);
   Playlists.push(newPlaylist);
   addToPlaylist();
 }
+var storedData = JSON.stringify(myPlaylist);
+localStorage.setItem(listName,storedData);*/
 loadTrack(0);
 pause.addEventListener("click", pauseplay);
 next.addEventListener("click", nextTrack);
