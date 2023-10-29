@@ -28,6 +28,7 @@ let back = document.querySelector(".back");
 let songsdisp = document.querySelector(".songlistdisp");
 let songList = document.querySelector(".songlist");
 let trackList = document.querySelector(".track_list");
+let switchPlaylist = document.querySelector(".switchPlaylist");
 
 let musicLibrary = [
   {
@@ -217,47 +218,11 @@ function muteUnmute() {
     unmute();
   }
 }
-function addToPlaylist() {
-  if (!myPlaylist.includes(musicLibrary[track_index])) {
-    myPlaylist.push(musicLibrary[track_index]);
-    addtp.innerHTML = `<i class="fa-solid fa-heart"></i>`;
-  } else {
-    myPlaylist.pop(musicLibrary[track_index]);
-    addtp.innerHTML = `<i class="fa-regular fa-heart"></i>`;
-  }
-  console.log(myPlaylist);
-}
-
-
-function changename() {
-  var newtitle = document.getElementById("inputTextField").value;
-  if (newtitle.length == 0) {
-    listName.innerHTML = "Your Playlist";
-  } else {
-    listName.innerHTML = newtitle;
-  }
-}
-
-function dispPlaylist() {
-  musicPlayer.style.cssText = "display:none";
-  playlistDisp.style.cssText = "visibility:visible";
-  let liItem = "";
-  myPlaylist.map(function (item) {
-    liItem = `<li>${item.name}</li>
-    <p>${item.artist}</p>`;
-  });
-  theaddedList.insertAdjacentHTML("beforeend", liItem);
-}
-function displayPlayer() {
-  musicPlayer.style.cssText = "display:block";
-  playlistDisp.style.cssText = "visibility:hidden";
-}
 function songlist() {
   musicPlayer.style.cssText = "display:none";
   songsdisp.style.cssText = "visibility:visible";
 
   for (let i = 0; i < musicLibrary.length; i++) {
-   
     let songs = document.createElement("div");
     songs.classList.add("track_list_item");
     songs.id = i;
@@ -276,7 +241,58 @@ function songlist() {
 function backbutton() {
   musicPlayer.style.cssText = "display:block";
   songsdisp.style.cssText = "visibility:hidden";
-}/*
+}
+function playlistname() {
+  var newtitle = document.getElementById("inputTextField").value;
+  if (newtitle.length == 0) {
+    listName = alert("Enter Playlist Name");
+  } else {
+    listName.innerHTML = newtitle;
+  }
+}
+function addToPlaylist() {
+  if (!myPlaylist.includes(musicLibrary[track_index])) {
+    myPlaylist.push(musicLibrary[track_index]);
+    addtp.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+  } else {
+    myPlaylist.pop(musicLibrary[track_index]);
+    addtp.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+  }
+  console.log(myPlaylist);
+}
+function dispPlaylist() {
+  musicPlayer.style.cssText = "display:none";
+  playlistDisp.style.cssText = "visibility:visible";
+  let liItem = "";
+  myPlaylist.map(function (item) {
+    liItem = `<li>${item.name}</li>
+    <p>${item.artist}</p>`;
+  });
+  theaddedList.insertAdjacentHTML("beforeend", liItem);
+}
+function hideButtons() {
+  switchPlaylist.style.cssText = "display:none";
+}
+function createPlaylist() {
+  if (listName === null) {
+    return;
+  }
+  hideButtons();
+  addToPlaylist();
+  dispPlaylist();
+  var storeData = JSON.stringify(myPlaylist);
+  localStorage.setItem(listName, storeData);
+}
+
+function displayPlayer() {
+  musicPlayer.style.cssText = "display:block";
+  playlistDisp.style.cssText = "visibility:hidden";
+}
+function switchPlaylists() {
+  musicPlayer.style.cssText = "display:none";
+  switchPlaylist.style.cssText = "visibility:visible";
+}
+/*
 function createPlaylist() {
   let newPlaylist = document.createElement(Array);
   Playlists.push(newPlaylist);
@@ -292,8 +308,8 @@ mainSlider.addEventListener("input", seek);
 Volume.addEventListener("input", SetVolume);
 document.addEventListener("keydown", keyss);
 addtp.addEventListener("click", addToPlaylist);
-list.addEventListener("click", dispPlaylist);
-submit.addEventListener("click", changename);
+list.addEventListener("click", switchPlaylists);
+submit.addEventListener("click", playlistname);
 back.addEventListener("click", backbutton);
 cross.addEventListener("click", displayPlayer);
 songList.addEventListener("click", songlist);

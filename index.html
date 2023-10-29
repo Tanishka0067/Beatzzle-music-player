@@ -64,7 +64,15 @@
         </div>
       </div>
     </div>
-    <div class="playlistdisp">
+    <div class="switchPlaylist">
+      <div>
+        <button onclick="createPlaylist()" class="bt1">
+          Create a new Playlist
+        </button>
+      </div>
+      <div><button class="bt2">View Existing Playlist</button></div>
+    </div>
+    <div class="playlistdisp" onclick="dispPlaylist()">
       <div class="box-head">
         <div>
           <h2 class="listname">
@@ -81,6 +89,7 @@
       </div>
       <ul class="addedlist"></ul>
     </div>
+
     <div class="songlistdisp">
       <h2>
         All Songs
