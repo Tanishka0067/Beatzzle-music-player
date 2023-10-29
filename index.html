@@ -14,6 +14,7 @@
   </head>
   <body>
     <h1>Beatzzle</h1>
+
     <div class="music-player">
       <div class="details">
         <marquee><div class="now-playing"></div></marquee>
@@ -50,19 +51,44 @@
             />
           </div>
         </div>
-        <div class="playlist-disp">
-          <i class="fa-solid fa-list"></i>
+        <div>
+          <button class="list"><i class="fa-solid fa-list"></i></button>
         </div>
-        <div id="addplaylist">
-          <i class="fa-solid fa-heart"></i>
+        <div>
+          <button class="addtoplaylist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+        <div>
+          <button class="songlist"><i class="fa-solid fa-music"></i></button>
         </div>
       </div>
     </div>
-    <div class="playlist-container">
-      <h1>~ Your Playlist ~</h1>
-
-      <ul id="playlist"></ul>
+    <div class="playlistdisp">
+      <div class="box-head">
+        <div>
+          <h2 class="listname">
+            <input
+              type="text"
+              id="inputTextField"
+              placeholder="Enter Playlist Name"
+            /><input type="submit" id="changeBtn" value="Submit" />
+          </h2>
+        </div>
+        <div>
+          <button class="return"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <ul class="addedlist"></ul>
     </div>
-    <script src="script.js"></script>
+    <div class="songlistdisp">
+      <h2>
+        All Songs
+        <button class="back"><i class="fa-solid fa-caret-down"></i></button>
+      </h2>
+      <ul class="track_list"></ul>
+    </div>
+
+    <script src="script.js" deferdes></script>
   </body>
 </html>

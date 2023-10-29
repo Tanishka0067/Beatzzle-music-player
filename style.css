@@ -57,6 +57,7 @@ marquee{
     justify-content: center;
     margin:0vw 30vw;
     gap: 20px;
+ 
 }
 .pause, 
 .previous, 
@@ -65,7 +66,7 @@ marquee{
    opacity: 0.7;
    transition: opacity .4s;
    font-size: 2rem;
-   
+   cursor: pointer;
 }
  .pause:hover,
  .previous:hover,
@@ -79,10 +80,11 @@ marquee{
     justify-content: center;
     align-items: center;
     margin: 2rem auto;
-    
+   
  }
  #main-slider{
     width: 60%;
+    cursor: pointer;
  }
 .feature{ display: flex;
     justify-content: center;
@@ -97,6 +99,7 @@ marquee{
     justify-content: center;
     align-items: center;
     gap: 5px;
+    cursor: pointer;
  }
  #main-slider,
  .volume{
@@ -116,12 +119,29 @@ marquee{
  .volume:hover{
     opacity: 1;
  }
-#addplaylist{
+ .list{opacity: transparent;
+    background: transparent;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+}
+.addtoplaylist,.songlist{
     opacity: transparent;
     background: transparent;
     font-size: 2rem;
     border: none;
+    cursor: pointer;
+
+}.return{
+    opacity: transparent;
+    background: transparent;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
 }
+.playList{
+visibility: hidden
+}/* 
 .playlist-disp{
     background: transparent;
     font-size: 2rem;
@@ -137,4 +157,106 @@ marquee{
 }
 .playlist-container h1{
     font-size: 2rem;
+} */
+.playlistdisp{
+    visibility: hidden;
+    width: 60%;
+    margin: auto;
+    box-shadow: 2px 2px 10px rgb(114, 6, 215);
+    background-color: rgb(32, 31, 31);
+    text-wrap: nowrap;
+}
+.playlistdisp h2{
+    font-size: 2rem;
+   text-align: center;
+  margin: 30px;
+   text-shadow: 1px 1px 10px rgb(114, 6, 215) ;
+}
+.addedlist{
+    list-style-type: none;
+    text-align: center;
+
+}
+
+.box-head{
+    display: flex;
+    justify-content: space-between;
+    align-items:first baseline;
+    
+}
+.box-head:nth-child(2){
+    justify-self: flex-end;
+   
+}
+.box-head i{
+    margin: 0px 30px;
+}
+#inputTextField{
+    background: rgb(39, 39, 39);
+    border: none;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    margin: 5px;
+    margin-bottom: 0;
+}
+#changeBtn{
+    opacity: transparent;
+    background: transparent;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background-color:rgb(114, 6, 215) ;
+    margin: 5px;
+    padding: 6px;
+    margin-bottom: 0;
+}
+
+.addedlist li{
+    font-size: 2rem;
+    padding: 2rem;
+    padding-bottom: 0;
+}
+.addedlist p{
+    font-size: 1.2rem;
+    
+}
+.songlistdisp{
+    visibility: hidden;
+    width: 60%;
+    margin: 30px auto;
+    box-shadow: 4px 4px 10px rgb(114, 6, 215);
+    background-color: rgb(32, 31, 31);
+    text-wrap: nowrap;
+    box-sizing: border-box;
+    
+}
+.songlistdisp h2{
+    padding: 20px;
+    font-size: 2.1rem;
+   text-align: center;
+   margin: 30px;
+   text-shadow: 1px 1px 10px rgb(114, 6, 215) ;
+}
+.track_list_item{
+    font-size: 1.6rem;
+    text-align: center;
+    padding-top:2rem;
+    cursor: pointer;
+}
+.track_artist{
+    text-align: center;
+    padding: 5px;
+}
+.track_list{
+    padding-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.back{
+    opacity: transparent;
+    background: transparent;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
 }
