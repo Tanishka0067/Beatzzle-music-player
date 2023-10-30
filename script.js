@@ -91,6 +91,30 @@ let musicLibrary = [
     image: "bannerimages/charles.jpeg",
     path: "audiofiles/MIA23.mp3",
   },
+  {
+    name: "Wolves",
+    artist: "Selena Gomez",
+    image: "bannerimages/wolves.jpg",
+    path: "audiofiles/Wolves.mp3",
+  },
+  {
+    name: "Brown Rang",
+    artist: "Yo Yo Honey Singh",
+    image: "bannerimages/brown.jpg",
+    path: "audiofiles/BrownRang.mp3",
+  },
+  {
+    name: "Jeene Bhi De",
+    artist: "Arijit Singh",
+    image: "bannerimages/jenebhide.jpeg",
+    path: "audiofiles/JeeneBhiDe.mp3",
+  },
+  {
+    name: "Saiyaan",
+    artist: "Kailash Kher",
+    image: "bannerimages/saiyaan.jpg",
+    path: "audiofiles/Saiyaan.mp3",
+  },
 ];
 
 function resetValue() {
@@ -287,6 +311,7 @@ function createPlaylist() {
 function displayPlayer() {
   musicPlayer.style.cssText = "display:block";
   playlistDisp.style.cssText = "visibility:hidden";
+  console.log("Cross clikcked");
 }
 function switchPlaylists() {
   musicPlayer.style.cssText = "display:none";
